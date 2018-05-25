@@ -1,7 +1,7 @@
 //dependencies
 var express = require('express');
 var path = require('path');
-var bodyParser = ('body-parser');
+var bodyParser = require('body-parser');
 //declaring express
 var app = express();
 //middleware
@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-require('./app/routing/apiRoutes');
-require('./app/routing/htmlRoutes');
+require('./app/routing/apiRoutes')(app);
+require('./app/routing/htmlRoutes')(app);
 
 //port 
 var port = process.env.PORT || 3050;
